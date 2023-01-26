@@ -1,0 +1,26 @@
+{
+  "name": "react-mini-projects",
+  "version": "1.0.0",
+  "description": "This repo is for mini react projects to practice basic skills",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CharlyLuna/react-mini-projects.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CharlyLuna/react-mini-projects/issues"
+  },
+  "homepage": "https://github.com/CharlyLuna/react-mini-projects#readme",
+  "devDependencies": {
+    "standard": "^17.0.0"
+  },
+  "eslintConfig": {
+    "extends": "./node_modules/standard/eslintrc.json"
+  }
+}
