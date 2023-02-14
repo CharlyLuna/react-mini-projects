@@ -1,13 +1,24 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import confetti from 'canvas-confetti'
 import { TURNS, WINNER_COMBOS } from '../utils/constants'
+import { resetStorage, saveGameToStorage } from '../logic/storage'
+
+const initialBoard = Array(9).fill(null)
+const initialTurn = TURNS.X
 
 export const useTicTacToe = () => {
-  const [board, setBoard] = useState(Array(9).fill(null))
+  const [board, setBoard] = useState(initialBoard)
 
-  const [turn, setTurn] = useState(TURNS.X)
+  const [turn, setTurn] = useState(initialTurn)
 
   const [winner, setWinner] = useState(null)
+
+  useEffect(() => {
+    const boardFromStorage = window.localStorage.getItem('board')
+    boardFromStorage ? setBoard(JSON.parse(boardFromStorage)) : setBoard(initialBoard)
+    const turnFromStorage = window.localStorage.getItem('turn')
+    setTurn(turnFromStorage ?? initialTurn)
+  }, [])
 
   const checkWinner = (boardToCheck) => {
     // check all winner combos
@@ -38,6 +49,8 @@ export const useTicTacToe = () => {
     // set next turn
     const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X
     setTurn(newTurn)
+    // Save game
+    saveGameToStorage(newBoard, newTurn)
     // check if theres a winner
     const newWinner = checkWinner(newBoard)
     if (newWinner) {
@@ -52,6 +65,7 @@ export const useTicTacToe = () => {
     setBoard(Array(9).fill(null))
     setTurn(TURNS.X)
     setWinner(null)
+    resetStorage()
   }
 
   return {
