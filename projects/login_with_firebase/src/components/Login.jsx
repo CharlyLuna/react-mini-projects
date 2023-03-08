@@ -1,18 +1,47 @@
-import { Form, Button } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Form, Button, Alert } from 'react-bootstrap'
+import { Link, useNavigate } from 'react-router-dom'
 import GoogleButton from 'react-google-button'
+import { useContext, useState } from 'react'
+import { UserAuthContext } from '../context/UserAuthContext'
 
 export const Login = () => {
+  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState('')
+  const [error, setError] = useState('')
+  const { logIn } = useContext(UserAuthContext)
+
+  const navigate = useNavigate()
+
+  const onEmailChange = ({ target }) => {
+    setEmail(target.value)
+  }
+
+  const onPasswordChange = ({ target }) => {
+    setPassword(target.value)
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setError('')
+    try {
+      await logIn(email, password)
+      navigate('/home')
+    } catch (e) {
+      setError(e.message)
+    }
+  }
+
   return (
     <>
       <div className='p-4 box'>
         <h2 className='mb-3'>Firebase Auth Login</h2>
-        <Form onSubmit={() => {}}>
+        {error && <Alert variant='danger'>{error}</Alert>}
+        <Form onSubmit={handleSubmit}>
           <Form.Group className='mb-3' controlId='formBasicEmail'>
             <Form.Control
               type='email'
               placeholder='Email address'
-              onChange={() => {}}
+              onChange={onEmailChange}
             />
           </Form.Group>
 
@@ -20,7 +49,7 @@ export const Login = () => {
             <Form.Control
               type='password'
               placeholder='Password'
-              onChange={() => {}}
+              onChange={onPasswordChange}
             />
           </Form.Group>
 
