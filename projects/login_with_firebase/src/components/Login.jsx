@@ -8,7 +8,7 @@ export const Login = () => {
   const [password, setPassword] = useState('')
   const [email, setEmail] = useState('')
   const [error, setError] = useState('')
-  const { logIn } = useContext(UserAuthContext)
+  const { logIn, googleSignIn } = useContext(UserAuthContext)
 
   const navigate = useNavigate()
 
@@ -25,6 +25,16 @@ export const Login = () => {
     setError('')
     try {
       await logIn(email, password)
+      navigate('/home')
+    } catch (e) {
+      setError(e.message)
+    }
+  }
+
+  const handleGoogleSignIn = async (e) => {
+    e.preventDefault()
+    try {
+      await googleSignIn()
       navigate('/home')
     } catch (e) {
       setError(e.message)
@@ -64,7 +74,7 @@ export const Login = () => {
           <GoogleButton
             className='g-btn'
             type='dark'
-            onClick={() => {}}
+            onClick={handleGoogleSignIn}
           />
         </div>
       </div>
