@@ -1,0 +1,25 @@
+main {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: system-ui;
+}
+
+section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* In case is asked to be responsive */
+@media screen and (max-width: 600px) {
+  section {
+    margin: auto 1rem;
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+  }
+}
