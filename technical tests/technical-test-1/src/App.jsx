@@ -2,6 +2,8 @@ import './App.css'
 import { useCatImage } from './hooks/useCatImage'
 import { useCatFact } from './hooks/useCatFact'
 
+const CAT_PREFIX_IMG_URL = 'https://cataas.com'
+
 export const App = () => {
   const { fact, refreshFact } = useCatFact()
   const { imageUrl } = useCatImage({ fact })
@@ -17,7 +19,7 @@ export const App = () => {
       <section>
         {fact && <p>{fact}</p>}
         {imageUrl && (
-          <img src={imageUrl} alt={`Random cat with the word ${fact} in it`} />
+          <img src={`${CAT_PREFIX_IMG_URL}${imageUrl}`} alt={`Random cat showing the first word of the fact: ${fact}`} />
         )}
       </section>
     </main>
