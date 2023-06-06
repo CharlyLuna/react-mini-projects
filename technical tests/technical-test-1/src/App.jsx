@@ -1,28 +1,13 @@
-import { useEffect, useState } from 'react'
 import './App.css'
-import { getRandomCatImgWithSomeWord, getRandomFact } from './services/facts'
-
-const CAT_PREFIX_IMG_URL = 'https://cataas.com'
+import { useCatImage } from './hooks/useCatImage'
+import { useCatFact } from './hooks/useCatFact'
 
 export const App = () => {
-  const [fact, setFact] = useState('')
-  const [image, setImage] = useState('')
+  const { fact, refreshFact } = useCatFact()
+  const { imageUrl } = useCatImage({ fact })
 
-  useEffect(() => {
-    getRandomFact()
-      .then((fact) => setFact(fact))
-  }, [])
-
-  useEffect(() => {
-    if (!fact) return
-    const firstWord = fact.split(' ', 1)
-    getRandomCatImgWithSomeWord(firstWord)
-      .then((url) => setImage(url))
-  }, [fact])
-
-  const handleClick = async () => {
-    const newFact = await getRandomFact()
-    setFact(newFact)
+  const handleClick = () => {
+    refreshFact()
   }
 
   return (
@@ -31,8 +16,8 @@ export const App = () => {
       <button onClick={handleClick}>Get new fact</button>
       <section>
         {fact && <p>{fact}</p>}
-        {image && (
-          <img src={`${CAT_PREFIX_IMG_URL}${image}`} alt={`Random cat with the word ${fact} in it`} />
+        {imageUrl && (
+          <img src={imageUrl} alt={`Random cat with the word ${fact} in it`} />
         )}
       </section>
     </main>
