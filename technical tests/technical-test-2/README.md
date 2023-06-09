@@ -16,7 +16,7 @@
 
 ## Primera iteración:
 
-- Evitar que se haga la misma búsqueda dos veces seguidas.
+✅ Evitar que se haga la misma búsqueda dos veces seguidas.
 
 - Haz que la búsqueda se haga automáticamente al escribir.
 
