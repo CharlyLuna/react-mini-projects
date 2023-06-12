@@ -1,14 +1,23 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import debounce from 'just-debounce-it'
 
 export const useSearch = () => {
   const [search, setSearch] = useState('')
   const [error, setError] = useState(null)
   const isFirstInput = useRef(true)
 
-  const handleChange = (e) => {
-    const newQuery = e.target.value
+  const debouncedGetMovies = useCallback(
+    debounce(({ search, getMovies }) => {
+      console.log({ search })
+      getMovies({ search })
+    }, 300), []
+  )
+
+  const handleChange = ({ event, getMovies }) => {
+    const newQuery = event.target.value
     if (newQuery.startsWith(' ')) return
     setSearch(newQuery)
+    debouncedGetMovies({ getMovies, search: newQuery })
   }
 
   useEffect(() => {
