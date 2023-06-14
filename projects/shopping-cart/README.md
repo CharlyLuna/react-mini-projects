@@ -1,4 +1,4 @@
-# Enunciado
+# Shopping cart project
 
 Ecommerce
 
