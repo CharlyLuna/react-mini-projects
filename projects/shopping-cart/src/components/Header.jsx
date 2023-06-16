@@ -1,10 +1,10 @@
 import { Filters } from './Filters'
 
-export const Header = ({ changeFilters }) => {
+export const Header = () => {
   return (
     <header>
       <h1>Shopping cart 🛒</h1>
-      <Filters changeFilters={changeFilters} />
+      <Filters />
     </header>
   )
 }
