@@ -10,7 +10,8 @@ export default {
         primary: {
           cyan: 'var(--light-cyan)',
           green: 'var(--neon-green)'
-        }
+        },
+        'dark-grayish-blue': 'var(--dark-grayish-blue)'
       }
     }
   },
