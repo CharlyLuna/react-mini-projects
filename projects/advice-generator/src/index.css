@@ -20,5 +20,11 @@
   -webkit-text-size-adjust: 100%;
 }
 
+@layer base {
+  .dice-button {
+    @apply absolute flex justify-center items-center w-24 h-24 rounded-full -bottom-[12%] left-1/2 -translate-x-1/2 hover:contrast-125 transition-all duration-300 
+  }
+}
+
 .attribution { font-size: 11px; text-align: center; }
 .attribution a { color: hsl(228, 45%, 44%); }
