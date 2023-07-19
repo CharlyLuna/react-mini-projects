@@ -11,7 +11,7 @@ export const App = () => {
     <>
       <main className='flex justify-center'>
         <div className='absolute top-1/2 -translate-y-1/2 flex flex-col justify-center w-full max-w-md md:max-w-lg gap-6 text-center bg-dark-grayish-blue m-6 py-10 rounded-md'>
-          <h1 className='text-primary-green'>ADVICE #{id}</h1>
+          <h1 className='text-primary-green'>A D V I C E # {id}</h1>
           <p className='text-2xl px-6 md:px-12 text-primary-cyan'>{isLoading ? '...' : `“${advice}”`}</p>
           <img
             className='px-6 md:hidden pb-8' src={DividerMobile} alt=''
