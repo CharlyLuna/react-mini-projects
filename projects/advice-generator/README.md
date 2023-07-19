@@ -31,7 +31,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL: [https://www.frontendmentor.io/solutions/advice-generator-app-using-react-and-tailwindcss-VnH7B8UuW7]
 - Live Site URL: [https://advice-generator-challenge-chluna.netlify.app/]
 
 ## My process
