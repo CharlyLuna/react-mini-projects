@@ -12,16 +12,15 @@ export const App = () => {
       <main className='flex justify-center'>
         <div className='absolute top-1/2 -translate-y-1/2 flex flex-col justify-center w-full max-w-md md:max-w-lg gap-6 text-center bg-dark-grayish-blue m-6 py-10 rounded-md'>
           <h1 className='text-primary-green'>ADVICE #{id}</h1>
-          <p className='text-2xl md:text-xl px-6 md:px-12 text-primary-cyan'>{isLoading ? '...' : `“${advice}”`}</p>
+          <p className='text-2xl px-6 md:px-12 text-primary-cyan'>{isLoading ? '...' : `“${advice}”`}</p>
           <img
             className='px-6 md:hidden pb-8' src={DividerMobile} alt=''
           />
           <img className='px-10 hidden md:block pb-8' src={DividerDesktop} alt='' />
-          <div className='dice-button z-0'>
-            <button onClick={getNewRandomAdvice} className='flex justify-center items-center bg-primary-green w-16 h-16 rounded-full z-10'>
-              <img className='h-7 w-auto' src={DiceIcon} alt='dice icon' />
-            </button>
-          </div>
+
+          <button onClick={getNewRandomAdvice} className='dice-button'>
+            <img className='h-7 w-auto' src={DiceIcon} alt='dice icon' />
+          </button>
         </div>
       </main>
       <footer className='absolute flex justify-center bottom-0 w-full'>
