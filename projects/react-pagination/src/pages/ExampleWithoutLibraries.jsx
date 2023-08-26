@@ -34,6 +34,7 @@ export const ExampleWithoutLibraries = () => {
 
   return (
     <>
+      <h1 style={{ fontSize: '1.5rem' }}>Page selection</h1>
       <Pagination
         itemsPerPage={itemsPerPage}
         totalItems={posts.length}
