@@ -1,0 +1,11 @@
+.list {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  gap: 10px;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+}
+.current-page {
+  background-color: #646cff;
+}

@@ -24,13 +24,22 @@ export const ExampleWithoutLibraries = () => {
     retrievePosts()
   }, [])
 
+  const paginate = (page) => {
+    setCurrentPage(page)
+  }
+
   const indexOfLastPost = currentPage * itemsPerPage
   const indexOfFirstPost = indexOfLastPost - itemsPerPage
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost)
 
   return (
     <>
-      <Pagination itemsPerPage={itemsPerPage} totalItems={posts.length} />
+      <Pagination
+        itemsPerPage={itemsPerPage}
+        totalItems={posts.length}
+        paginate={paginate}
+        currentPage={currentPage}
+      />
       <div>
         {
         isLoading
