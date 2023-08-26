@@ -1,0 +1,15 @@
+.post-card{
+  background-color: rgb(27, 27, 27);
+  text-align: start;
+  padding: 10px 20px;
+  margin: 15px;
+  border-radius: 5px;
+}
+
+.post-card h1 {
+  font-size: 1.5rem;
+}
+
+.post-card p {
+  font-style: italic;
+}
