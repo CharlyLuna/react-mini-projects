@@ -3,6 +3,8 @@ import { TodosList } from "./components/TodosList";
 import type { Todo, TodoFilters, TodoId } from "./interfaces/todos";
 import { TODO_FILTERS } from "./helpers/constants";
 import { Footer } from "./components/Footer";
+import { Header } from "./components/Header";
+import { TodoTitle } from "./interfaces/todos";
 
 const MOCK_TODOS: Todo[] = [
   { id: "1", title: "todo1", completed: false },
@@ -36,6 +38,20 @@ function App() {
     setTodos(newTodos);
   };
 
+  const handleAddTodo = ({ title }: TodoTitle) => {
+    const newTodo = { id: crypto.randomUUID(), title, completed: false };
+    const newTodos = [...todos, newTodo];
+    setTodos(newTodos);
+  };
+
+  const handleTodoTitleChange = ({ id, title }: TodoTitle & TodoId) => {
+    const newTodos = todos.map((todo) => {
+      if (todo.id === id) todo.title = title;
+      return todo;
+    });
+    setTodos(newTodos);
+  };
+
   const remainingTodos = todos.filter((todo) => !todo.completed).length;
   const completedTodos = todos.length - remainingTodos;
   const filteredTodos = todos.filter((todo) => {
@@ -45,7 +61,13 @@ function App() {
 
   return (
     <div className='todoapp'>
-      <TodosList todos={filteredTodos} onRemove={handleRemove} onCompleted={handleCompleted} />
+      <Header onAdd={handleAddTodo} />
+      <TodosList
+        todos={filteredTodos}
+        onRemove={handleRemove}
+        onCompleted={handleCompleted}
+        handleTitleChange={handleTodoTitleChange}
+      />
       <Footer
         clearCompleted={handleRemoveAllCompleted}
         completedTodos={completedTodos}
